@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculate Payments Form</title>
+
+<script language="JavaScript" type="text/javascript">
+function calcpayments()
+{
+var oldassv=document.forms[0].oldassv.value*1;
+var newassv=document.forms[0].newassv.value*1;
+var oldtax=(oldassv/1000*25.5659).toFixed(2);
+var newtax=(newassv/1000*13.3449).toFixed(2);
+var imv=(oldassv/.565).toFixed(2);
+var result=(newtax-oldtax).toFixed(2);
+
+var options = { style: 'currency', currency: 'USD' };
+
+document.getElementById("newtax").innerHTML=new Intl.NumberFormat('en-US', options).format(newtax);
+document.getElementById("oldtax").innerHTML=new Intl.NumberFormat('en-US', options).format(oldtax);
+document.getElementById("imv").innerHTML=new Intl.NumberFormat('en-US', options).format(imv);
+document.getElementById("taxpayment").innerHTML=new Intl.NumberFormat('en-US', options).format(result);
+}
+
+</script>
+</head>
+
+<body>
+
+<h3>HTML/JavaScript form to calculate tax</h3>
+
+<div align="left">
+<div id="calclpayment">
+        <form>
+        <strong>
+          <br />
+Please enter your assessment values:</strong> <br />
+<br />
+<table width="100%" align="left">
+          <td width="176"><div align="left">Old Home Assessment Value:*</div></td>
+              <td width="144"><input type= "number" name="oldassv" /></td>
+      </tr>
+          <tr>
+            <td><div align="left">New Home Assessment Value:*</div></td>
+        <td><label>
+          <input type="number" name="newassv" />
+          </label>      </td>
+      </tr>
+          <tr>
+            <td>&nbsp;</td>
+        <td><input name="Input" type="button" value="Calculate tax difference" onclick="calcpayments()"/></td>
+        <td><input name="reset2" type="reset" value="Clear" /></td>
+      </tr>
+          </table>
+   <br />
+  
+<b>Old Tax Calculation:</b>   <br />
+  <br />
+<div id="oldtax" style="font-size: 25px;background-color:#333; 
+font-weight: bold; width: 325px; padding: 5px; margin-bottom:20px; margin-top:-10px; color:#FFF;" > 0  </div>
+
+<b>Implied Market Value is:</b>  <br />
+  <br />
+ <div id="imv" style="font-size: 25px;background-color:#333; 
+font-weight: bold; width: 325px; padding: 5px; margin-bottom:20px; margin-top:-10px; color:#FFF;" > 0  </div>
+
+<b>New Tax Calculation:</b>  <br />
+  <br />
+<div id="newtax" style="font-size: 25px;background-color:#333; 
+font-weight: bold; width: 325px; padding: 5px; margin-bottom:20px; margin-top:-10px; color:#FFF;" > 0  </div>
+
+<b>Your tax difference is:</b>  <br />
+  <br />
+  <div id="taxpayment" style="font-size: 25px;background-color:#333; 
+font-weight: bold; width: 325px; padding: 5px; margin-bottom:20px; margin-top:-10px; color:#FFF;" > 0  </div>
+
+      </form>
+  
+  </div>
+          <br />
+          <br />
+        </p>
+    </div>
+
+</body>
+</html>
