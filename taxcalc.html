@@ -5,12 +5,17 @@
 <title>Calculate Payments Form</title>
 
 <script language="JavaScript" type="text/javascript">
+
+<!--Change these Variables--> 
+var oldmillage=25.5659
+var newmillage=26.3449
+
 function calcpayments()
 {
 var oldassv=document.forms[0].oldassv.value*1;
 var newassv=document.forms[0].newassv.value*1;
-var oldtax=(oldassv/1000*25.5659).toFixed(2);
-var newtax=(newassv/1000*13.3449).toFixed(2);
+var oldtax=(oldassv/1000*oldmillage).toFixed(2);
+var newtax=(newassv/1000*newmillage).toFixed(2);
 var imv=(oldassv/.565).toFixed(2);
 var result=(newtax-oldtax).toFixed(2);
 
